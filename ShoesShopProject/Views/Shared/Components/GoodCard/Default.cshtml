@@ -1,0 +1,61 @@
+﻿@model ShoesShopProject.ViewModels.GoodCardViewModel
+
+@{
+    string SizesToString = " ";
+    foreach (var i in Model.Sizes)
+    {
+        SizesToString += i.SizeEuro;
+        SizesToString += " ";
+    }
+}
+
+<div class="card">
+   
+                <div class="content">
+                  
+        @if (Model.GoodPhotos != null && Model.GoodPhotos.Any())
+        {
+        <img height="200px" width="200px" id="Layer_1"  viewBox="0 0 512 512" src="@Model.GoodPhotos.FirstOrDefault().Path"></img>
+        }">
+                  <div class="description">
+                    <p class="title">
+                      <strong style="font-size: 22px;">@Model.Name</strong>
+                    </p>
+                    <p class="info">
+                      розміри<br>
+                      <span style=" color: #858585;">
+                    @SizesToString
+                </span>
+                </p>
+                <br>
+                @if(Model.Sale!=0){
+                                <div class="discount-badge">-@Model.Sale&percnt;</div>
+                    <p class="price">
+                      <s>@Model.FullPrice</s>
+                    </p>
+                    <p class="price" style="font-size: 25px; color: red;">
+                      @Model.SalePrice
+                </p>
+            }else if (Model.FullPrice != Model.SalePrice)
+            {
+                    <p class="price">
+                              <s>@Model.FullPrice</s>
+                        </p>
+                        <p class="price" style="font-size: 25px; color: red;">
+                    @Model.SalePrice
+                </p>
+            }
+            else
+            {
+                        <p class="price" style="visibility:hidden;">
+                                  <s>???</s>
+                            </p>
+                                <p class="price" style="font-size: 25px;">
+                    @Model.SalePrice
+                    </p>
+            }
+
+
+                  </div>
+                </div>
+              </div>

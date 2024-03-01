@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ShoesShopProject.ViewModels.GoodCardViewModel>
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+
+		  <div class="text-center">
+
+			<div style="display:flex;justify-content:center;flex-wrap: wrap;width: 100%;">
+
+
+			  <div class="brands">
+				  <div class="brand-logo">
+					  <img src="\images\nike.jpg" alt="Логотип">
+				  </div>
+				  <div class="brand-logo">
+					<img src="\images\newbalance.jpg" alt="Логотип">
+				</div>
+				  <div class="brand-logo">
+					<img src="\images\puma.jpg" alt="Логотип">
+				</div>
+			  <div class="brand-logo">
+				<img src="\images\jordan.jpg" alt="Логотип">
+			</div>
+			<div class="brand-logo">
+			  <img src="\images\adidas2.png" alt="Логотип">
+		  </div>
+		  <div class="brand-logo">
+			<img src="\images\timberland.jpg" alt="Логотип" style="margin-left: 1px;">
+		</div>
+		</div>
+		<div style="display: flex;" class="baner-border" >
+
+				<div>
+				<a href=>
+				<img src="\images\six.jpg" width="600" height="350" >
+				</a>
+				</div>
+				<div class="right-area">
+				<div class="right-area-in">
+				<div class="heading" style="color: red;">
+				Хіти розпродажу! </div>
+				<div class="description" style="color: #000000">
+				  Зі знижками. У передчутті сезону... </div>
+				<a href="/deals/20318/">
+
+				  <button class="more-btn"> Переглянути більше
+				  </button>
+
+				</a>
+				</div>
+				</div>
+				</div>
+		@foreach (var item in Model)
+		{
+			@await Component.InvokeAsync("GoodCard", item)
+		}
+
+				
+
+
+
+

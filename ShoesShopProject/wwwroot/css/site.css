@@ -1,0 +1,400 @@
+img {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+}
+
+html {
+    font-size: 14px;
+    font-family: "Varela Round", sans-serif;
+
+}
+
+
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+a {
+    color: #0077cc;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card {
+    width: 284px;
+    height: 508px;
+    overflow: visible;
+    cursor: pointer;
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+}
+
+    .card::before, .content {
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 1px #00000022;
+        transition: transform 300ms, box-shadow 200ms;
+    }
+
+    .card::before {
+        position: absolute;
+        content: ' ';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #cadad0;
+        transform: rotateZ(5deg);
+    }
+
+.description {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.info {
+    color: #00000066;
+    font-size: 15px;
+}
+
+.price::before {
+    content: '$';
+}
+
+.price {
+    font-size: 14px;
+    font-weight: bold;
+    /* color: #ee9933; */
+    color: #1A1A1A;
+    font-weight: 600;
+}
+
+.description p {
+    margin-bottom: 10px;
+}
+
+.card .content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: rotateZ(-5deg);
+}
+
+.content .img {
+    width: 150px;
+    height: fit-content;
+}
+
+.card:hover::before, .card:hover .content {
+    transform: rotateZ(0deg);
+}
+
+.card:active::before, .card:active .content {
+    box-shadow: none;
+}
+
+.discount-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: red; /* «м≥н≥ть кол≥р на той, €кий ви хочете */
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+}
+
+.tabs {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .tabs li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+        .tabs li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            padding: 7px;
+        }
+
+
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+}
+
+    .nav-buttons a {
+        margin-left: 20px;
+    }
+
+        .nav-buttons a img {
+            width: 30px;
+            height: 30px;
+        }
+
+header {
+    height: 58px;
+}
+
+hr {
+    margin: 0;
+}
+
+header .main-menu-top .active a {
+    background-color: #e9f2ff !important;
+}
+
+header .main-menu-top ul li {
+    font-size: 18px;
+    line-height: 22px;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+}
+
+header .main-menu-top .active {
+    border-bottom: 2px solid #4466df !important;
+    background-color: #E9F2FF;
+}
+
+header .main-menu-top {
+    position: relative;
+    font-weight: 600;
+    color: #000;
+    padding: 7px;
+}
+
+.baner-border {
+    border-top: 2px;
+    border-bottom: 2px;
+    border-left: 0;
+    border-right: 0;
+    border-style: groove;
+    margin-bottom: 30px;
+    width: 100%;
+    border-color: #9a9a9a !important;
+}
+
+.heading {
+    font-size: 22px;
+    line-height: 27px;
+    font-weight: 600;
+    display: block;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+}
+
+.description {
+    font-size: 22px;
+    line-height: 27px;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: unset;
+}
+
+.right-area {
+    padding: 90px 0 0 10px;
+    flex: 0 1 80%;
+    display: flex;
+}
+
+.right-area-in {
+    max-width: 40vw;
+    padding-left: 25%;
+}
+
+
+
+.more-btn {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #725AC1;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid #725AC1;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0 #725AC1;
+    width: 300px;
+}
+
+    .more-btn:hover {
+        color: white;
+        box-shadow: inset 0 -100px 0 0 #725AC1;
+    }
+
+    .more-btn:active {
+        transform: scale(0.9);
+    }
+
+
+.brand-circle-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-width: 1px;
+    border-style: groove;
+    padding: 2px;
+    border-radius: 115px;
+    height: 115px;
+    width: 115px;
+    overflow: hidden;
+    border: 2px solid #818181;
+}
+
+.brands {
+    display: flex;
+    margin-bottom: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1340px;
+    }
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.brand-logo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #413b3e;
+    box-sizing: border-box;
+    margin: 0 5px;
+    transition: transform 0.2s;
+}
+
+    .brand-logo:active {
+        transform: scale(0.95);
+    }
+
+    .brand-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
