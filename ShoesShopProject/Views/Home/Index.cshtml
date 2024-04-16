@@ -4,35 +4,48 @@
 }
 
 
+
 		  <div class="text-center">
 
-			<div style="display:flex;justify-content:center;flex-wrap: wrap;width: 100%;">
+			<div id="appender" style="display:flex;justify-content:center;flex-wrap: wrap;width: 100%;">
 
 
 			  <div class="brands">
+			<a href="/Shoes/Find?brands=Nike">
 				  <div class="brand-logo">
 					  <img src="\images\nike.jpg" alt="Логотип">
 				  </div>
+			</a>
+			<a href="/Shoes/Find?brands=New%20Balance">
 				  <div class="brand-logo">
 					<img src="\images\newbalance.jpg" alt="Логотип">
 				</div>
+				</a>
+			<a href="/Shoes/Find?brands=Puma">
 				  <div class="brand-logo">
 					<img src="\images\puma.jpg" alt="Логотип">
 				</div>
+				</a>
+			<a href="/Shoes/Find?brands=Jordan">
 			  <div class="brand-logo">
 				<img src="\images\jordan.jpg" alt="Логотип">
 			</div>
+			</a>
+			<a href="/Shoes/Find?brands=Adidas">
 			<div class="brand-logo">
 			  <img src="\images\adidas2.png" alt="Логотип">
 		  </div>
+		  </a>
+			<a href="/Shoes/Find?brands=Timberland">
 		  <div class="brand-logo">
 			<img src="\images\timberland.jpg" alt="Логотип" style="margin-left: 1px;">
 		</div>
+		</a>
 		</div>
 		<div style="display: flex;" class="baner-border" >
 
 				<div>
-				<a href=>
+				<a href="/Shoes/Find?isSaleOnly=true">
 				<img src="\images\six.jpg" width="600" height="350" >
 				</a>
 				</div>
@@ -42,7 +55,7 @@
 				Хіти розпродажу! </div>
 				<div class="description" style="color: #000000">
 				  Зі знижками. У передчутті сезону... </div>
-				<a href="/deals/20318/">
+					<a href="/Shoes/Find?isSaleOnly=true">
 
 				  <button class="more-btn"> Переглянути більше
 				  </button>
@@ -51,10 +64,18 @@
 				</div>
 				</div>
 				</div>
+
 		@foreach (var item in Model)
 		{
 			@await Component.InvokeAsync("GoodCard", item)
 		}
+			
+		
+		</div>
+		</div>
+		<script src="~/js/scroll.js" asp-append-version="true"></script>
+		<script src="~/js/Home.Index.js" asp-append-version="true"></script>
+
 
 				
 

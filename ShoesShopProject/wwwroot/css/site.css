@@ -1,4 +1,4 @@
-img {
+Ôªøimg {
     max-width: 100%;
     height: auto;
     aspect-ratio: auto;
@@ -10,7 +10,15 @@ html {
 
 }
 
-
+.no-style-submit {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
 
 @media (min-width: 768px) {
     html {
@@ -129,8 +137,8 @@ button.accept-policy {
     font-size: 15px;
 }
 
-.price::before {
-    content: '$';
+.price::after {
+    content: '‚Ç¥';
 }
 
 .price {
@@ -174,12 +182,56 @@ button.accept-policy {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    background-color: red; /* «Ï≥Ì≥Ú¸ ÍÓÎ≥ Ì‡ ÚÓÈ, ˇÍËÈ ‚Ë ıÓ˜ÂÚÂ */
+    background-color: red; 
     color: white;
     padding: 5px 10px;
     font-size: 14px;
     border-radius: 5px;
 }
+.add-order-button {
+    appearance: none;
+    background-color: transparent;
+    border: 0.125em solid #1A1A1A;
+    border-radius: 0.9375em;
+    box-sizing: border-box;
+    color: #3B3B3B;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 3.75em;
+    min-width: 0;
+    outline: none;
+    padding: 1em 2.3em;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+}
+
+
+.add-order-button:disabled {
+    pointer-events: none;
+}
+
+.add-order-button:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+    .add-order-button:active {
+        box-shadow: none;
+        transform: translateY(0);
+    }
+
 
 
 
@@ -398,3 +450,202 @@ header .main-menu-top {
         height: 100%;
         object-fit: fill;
     }
+
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-scrolable {
+    max-height: 200px;
+    overflow-y: scroll;
+    margin-left: 10px;
+}
+
+.filter-submit-button {
+    --color: #00A97F;
+    padding: 0.8em 1.7em;
+    padding: 5px 60px;
+    margin: 10px 10px 0 10px;
+    background-color: transparent;
+    border-radius: .3em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 17px;
+    border: 1px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: var(--color);
+    z-index: 1;
+}
+
+    .filter-submit-button::before, .filter-submit-button::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 50px;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        border-radius: 50%;
+        z-index: -1;
+        background-color: var(--color);
+        transition: 1s ease;
+    }
+
+    .filter-submit-button::before {
+        top: -1em;
+        left: -1em;
+    }
+
+    .filter-submit-button::after {
+        left: calc(100% + 1em);
+        top: calc(100% + 1em);
+    }
+
+    .filter-submit-button:hover::before, .filter-submit-button:hover::after {
+        height: 410px;
+        width: 410px;
+    }
+
+    .filter-submit-button:hover {
+        color: rgb(10, 25, 30);
+    }
+
+    .filter-submit-button:active {
+        filter: brightness(.8);
+    }
+
+.filtration {
+    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-left: 29px;
+}
+.category-container {
+    margin-bottom: 10px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #f4f4f4;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    position: relative; /* –î–æ–¥–∞–ª–∏ –¥–ª—è –ø–æ–∑–∏—Ü—ñ–æ–Ω—É–≤–∞–Ω–Ω—è */
+}
+
+    .tag:hover {
+        cursor: pointer;
+    }
+
+.delete-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    line-height: 15px;
+}
+
+.tag:hover .delete-icon {
+    display: block;
+}
+
+.tag input {
+    border: none;
+    background: none;
+    outline: none;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    line-height: normal;
+    cursor: pointer;
+}
+.shoe-about-wrapper {
+    display: flex;
+}
+
+.carousel-control-next-icon {
+    background-image: none !important;
+}
+
+.carousel-control-prev-icon {
+    background-image: none !important;
+}
+.carousel-indicators li {
+    box-sizing: content-box;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    width: 30px;
+    height: 3px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    opacity: .5;
+    transition: opacity .6s ease;
+}
+
+.wishlist {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    transition: background 0.5s ease;
+}
+
+    .wishlist:hover {
+    }
+
+.active#heart:before, .active#heart:after {
+    background: red !important;
+}
+
+#heart {
+    width: 70px;
+    height: 60px;
+    transition: background 0.5s ease;
+}
+
+    #heart:before,
+    #heart:after {
+        transition: background 0.5s ease;
+        position: absolute;
+        content: "";
+        left: 28px;
+        top: 10px;
+        width: 30px;
+        height: 50px;
+        background: darkgrey;
+        border-radius: 50px 50px 0 0;
+        transform: rotate(313deg);
+        transform-origin: 0 100%;
+    }
+
+    #heart:after {
+        left: 0;
+        transform: rotate(45deg);
+        transform-origin: 100% 100%;
+    }
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

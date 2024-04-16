@@ -1,0 +1,89 @@
+﻿@model ShoesShopProject.Models.Order
+@{
+    ViewData["Title"] = "Деталі";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal total = 0;
+}
+<dl class="row">
+    <dt class="col-sm-2">
+        Айді замовлення
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Id)
+    </dd>
+    <dt class="col-sm-2">
+        Статус замовлення
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model=> model.Status)
+    </dd>
+    <dt class="col-sm-2">
+        Номер телефону
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.User.PhoneNumber)
+    </dd>
+    <dt class="col-sm-2">
+        Username користувача
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.User.UserName)
+    </dd>
+    Товари
+@foreach (var i in Model.GoodOrders)
+{
+    <hr />
+        <dt class="col-sm-2">
+            Айді товару
+        </dt>
+        <dd class="col-sm-10">
+            @i.Good.Id
+        </dd>
+        <dt class="col-sm-2">
+            Назва товару
+        </dt>
+        <dd class="col-sm-10">
+            <a href="/Shoes/Details/@(i.Good.Slug)"> @i.Good.Name </a>
+        </dd>
+        <dt class="col-sm-2">
+            Ціна
+        </dt>
+        <dd class="col-sm-10">
+            @i.Good.SalePrice
+        </dd>
+        <dt class="col-sm-2">
+            Ціна за даний вид товару
+        </dt>
+        <dd class="col-sm-10">
+            @(i.Good.SalePrice*i.Count)
+        </dd>
+        <dt class="col-sm-2">
+            Розмір
+        </dt>
+        <dd class="col-sm-10">
+            @i.Size
+        </dd>
+        <dt class="col-sm-2">
+            Кількість
+        </dt>
+        <dd class="col-sm-10">
+            @i.Count
+        </dd>
+
+        total += i.Count * i.Good.SalePrice;
+        <hr />
+    }
+    <dt class="col-sm-2">
+        Загальна сума замовлення
+    </dt>
+    <dd class="col-sm-10">
+        @total ₴
+    </dd>
+</dl>
+<br />
+<a href="/Orders">
+<div class="btn btn-primary">
+    Назад
+</div>
+</a>
+

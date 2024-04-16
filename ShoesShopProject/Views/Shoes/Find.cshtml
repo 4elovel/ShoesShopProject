@@ -1,0 +1,156 @@
+﻿@model IEnumerable<ShoesShopProject.ViewModels.GoodCardViewModel>
+<div class="filtration">
+@using (Html.BeginForm("Find", "Shoes", FormMethod.Post))
+{
+          <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Розмір
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-scrolable" >
+                @foreach (var i in ViewBag.ViewSizes as List<string>)
+                {
+                    <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" style="padding-left:105px margin-right:1px" name="sizes" value="@i" id="size @i">
+                            <label class="form-check-label" for="size @i"  >@i</label>
+                          </div>
+                }
+                  </div>
+                  <button type="submit" class="btn btn-primary filter-submit-button">Застосувати</button>
+                </div>
+                </div>   
+                
+
+                    <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Стать
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-scrolable" >
+
+                            <div class="form-group form-check">
+                                        <input type="radio" class="form-check-input"  onclick="radioClick(this)" name="gender" value="m" id="male">
+                                    <label class="form-check-label" for="male"  >Чоловіча</label>
+                                  </div>
+                            <div class="form-group form-check">
+                                        <input type="radio" class="form-check-input"  onclick="radioClick(this)" name="gender" value="f" id="female">
+                                    <label class="form-check-label" for="female"  >Жіноча</label>
+                                  </div>
+                                       </div>
+                          <button type="submit" class="btn btn-primary filter-submit-button">Застосувати</button>
+                    </div>
+                    </div> 
+                    
+
+                        <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Ціна
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-scrolable">
+                <div class="form-group">
+                    <label for="minPrice">Мінімальна ціна:</label>
+                    <input type="text" class="form-control" id="minPrice" name="minPrice">
+                </div>
+                <div class="form-group">
+                    <label for="maxPrice">Максимальна ціна:</label>
+                    <input type="text" class="form-control" id="maxPrice" name="maxPrice">
+                </div>
+
+                    <div class="form-group form-check">
+                        <input type="radio" class="form-check-input" onclick="radioClick(this)" name="isSaleOnly" value="true" id="sale-only">
+                        <label class="form-check-label" for="sale-only">Тільки товари із знижкою</label>
+                    </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary filter-submit-button">Застосувати</button>
+        </div>
+    </div>
+
+
+        <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Категорії
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-scrolable" >
+                @foreach (var i in ViewBag.ViewCategories as List<string>)
+                {
+                            <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" style="padding-left:105px margin-right:1px" name="categories" value="@i" id="category @i">
+                                    <label class="form-check-label" for="category @i"  >@i</label>
+                                  </div>
+                }
+                      </div>
+                      <button type="submit" class="btn btn-primary filter-submit-button">Застосувати</button>
+                    </div>
+                    </div>  
+
+                        <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Бренд
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-scrolable" >
+                    @foreach (var i in ViewBag.ViewBrands as List<string>)
+                    {
+                            <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" style="padding-left:105px margin-right:1px" name="brands" value="@i" id="brand @i">
+                                    <label class="form-check-label" for="brand @i"  >@i</label>
+                                  </div>
+                    }
+                      </div>
+                      <button type="submit" class="btn btn-primary filter-submit-button">Застосувати</button>
+                    </div>
+                    </div>  
+
+}
+</div>
+<div class="text-center">
+
+            <div id="appender" style="display:flex;justify-content:center;flex-wrap: wrap;width: 100%;">
+
+@foreach (var item in Model)
+{
+    @await Component.InvokeAsync("GoodCard", item)
+}
+
+</div>
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script> 
+
+        var check1, check2;
+function radioClick(c) {
+    if (check1 != c) {
+        check2 = 0;
+        check1 = c
+    }
+    check2 ^= 1;
+    c.checked = check2
+}
+
+
+    </script>
+    <script src="~/js/scroll.js" asp-append-version="true"></script>
+    <script src="~/js/Shoes.Find.js" asp-append-version="true"></script>
+    <script>
+        PageIndex--;
+        loadCards(new URLSearchParams(new URL(window.location.href).search).toString());
+
+    $(document).ready(function () {
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const genderParam = urlParams.get('gender');
+        if (genderParam === 'm') {
+            $('#male').addClass('active');
+        } else if (genderParam === 'f') {
+            $('#female').addClass('active');
+        }else {
+            $('#search').addClass('active');
+        }
+    });
+</script>

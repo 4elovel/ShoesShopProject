@@ -4,24 +4,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ShoesShopProject</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ShoesShopProject.styles.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="~/icon.png" sizes="32x32">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 </head>
 <body>
 <header style="position: sticky; top: 0px; z-index: 10;">
       <div class="navigation">
         <ul class="tabs main-menu-top">
-            <li><a href="#" class="active">Чоловікам</a></li>
-            <li><a href="#">Жінкам</a></li>
-            <li><a href="#">Унісекс</a></li>
-            <li><a href="#">Пошук по категоріям</a></li>
+                <li><a href="/Home" id="main-page">На головну</a></li>
+                <li><a href="/Shoes/Find?gender=m" id="male">Чоловікам</a></li>
+                <li><a href="/Shoes/Find?gender=f" id="female">Жінкам</a></li>
+            <li><a asp-action="Find" asp-controller="Shoes" id="search">Пошук по категоріям</a></li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li><a asp-action="Index" asp-controller="Goods" id="admin-panel">Адмін панель</a></li>
+                    <li><a asp-action="Index" asp-controller="Orders" id="orders">Замовлення</a></li>
+                }
         </ul>
+        
         <div class="nav-buttons">
-          <a href="#" class="profile-button">
+          <a href="/Identity/Account/Login" class="profile-button">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
             <g id="icon-profile" class="img">
                 <rect width="26" height="26"/>
@@ -29,14 +38,14 @@
                 <path d="M22.3205 24C22.0009 24 21.7172 23.8 21.5911 23.5063C20.0496 19.9143 16.723 17.5 12.9991 17.5C9.27515 17.5 5.94856 19.9143 4.40705 23.5063C4.28099 23.8 3.99729 24 3.67765 24C3.15788 24 2.79 23.4923 2.99102 23.013C4.72646 18.875 8.55501 16 12.9991 16C17.4432 16 21.2717 18.875 23.0071 23.013C23.2082 23.4923 22.8403 24 22.3205 24Z" fill="#1A1A1A"/>
             </g>
         </svg></a>
-            <a href="#" class="wishlist-button">
+                <a href="/Account/Wishlist" class="wishlist-button">
               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
               <g id="like" class="img">
                   <rect width="26" height="26"/>
                   <path d="M12.4537 5.72117L13 6.30206L13.5463 5.72117C16.5998 2.47456 21.1892 3.53342 22.7197 6.75041C23.4797 8.34784 23.5402 10.5863 22.1165 13.2725C20.7232 15.9011 17.9126 18.939 13 22.1098C8.08737 18.939 5.27679 15.9011 3.88353 13.2725C2.45979 10.5863 2.52026 8.34784 3.28026 6.75041C4.8108 3.53342 9.40019 2.47456 12.4537 5.72117Z" stroke="#1A1A1A" stroke-width="1.5"/>
               </g>
           </svg></a>
-            <a href="#" class="order-button">
+            <a href="/Account/Order" class="order-button">
               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
               <g id="icon-cart" class="img">
                   <rect width="26" height="26"/>

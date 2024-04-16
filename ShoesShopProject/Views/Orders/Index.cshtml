@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ShoesShopProject.ViewModels.AdminOrderViewModel>
+@{
+    ViewData["Title"] = "Товари";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id замовлення</th>
+            <th>Статус</th>
+            <th>Номер користувача</th>
+            <th>Сума замовлення</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model != null && Model.Count() > 0)
+        {
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <td>@i.OrderId</td>
+                    <td>
+                        <select class="form-select" aria-label="Default select example" onchange="changeOrderStatus(this)">
+
+                            @if (i.Status == OrderStatuses.Ordered)
+                            {
+                                <option selected value="1" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Ordered)">Ordered</option>
+                            }
+                            else
+                            {
+                                <option value="1" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Ordered)">Ordered</option>
+                            }
+
+                            @if (i.Status == OrderStatuses.Pending)
+                            {
+                                <option selected value="0" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Pending)">Pending</option>
+                            }
+                            else
+                            {
+                                <option value="0" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Pending)">Pending</option>
+                            }
+
+                            @if (i.Status == OrderStatuses.Completed)
+                            {
+                                <option selected value="2" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Completed)">Completed</option>
+                            }
+                            else
+                            {
+                                <option value="2" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Completed)">Completed</option>
+                            }
+                        </select>
+                    </td>
+                    <td>@i.PhoneNumber</td>
+                    <td>@i.TotalPrice ₴</td>
+                    <td><a href="Orders/Details/@(i.OrderId)"><div class="btn btn-primary">Детально</div></a></td>
+                </tr>
+            }
+        }
+        
+    </tbody>
+</table>
+
+
+<script>
+    document.getElementById("orders").classList.add('active');
+</script>
+
+<script src="~/js/Orders.ChangeStatus.js" asp-append-version="true"></script>

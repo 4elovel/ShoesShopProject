@@ -1,0 +1,155 @@
+﻿@model ShoesShopProject.Models.Good
+
+@{
+    ViewData["Title"] = "Редагувати";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Редагувати</h1>
+
+<h4>Товар</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuyPrice" class="control-label"></label>
+                <input asp-for="BuyPrice" class="form-control" />
+                <span asp-validation-for="BuyPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FullPrice" class="control-label"></label>
+                <input asp-for="FullPrice" class="form-control" />
+                <span asp-validation-for="FullPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sale" class="control-label"></label>
+                <input asp-for="Sale" class="form-control" />
+                <span asp-validation-for="Sale" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SalePrice" class="control-label"></label>
+                <input asp-for="SalePrice" class="form-control" />
+                <span asp-validation-for="SalePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slug" class="control-label"></label>
+                <input asp-for="Slug" class="form-control" />
+                <span asp-validation-for="Slug" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Розміри
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-scrolable" >
+                            @if (ViewBag.ViewSizes != null)
+                            @foreach (var i in ViewBag.ViewSizes as List<string>)
+                            {
+                                bool leaver = false;
+                                int amount = 0;
+                                <div class="form-group form-check">
+                            @foreach (var j in Model.Sizes)
+                                    {
+                                        @if (i == j.SizeEuro) { 
+                                            leaver = true;
+                                            amount = j.Amount;
+                                        }
+                                    }
+                                    <input type="checkbox" class="form-check-input" style="" name="sizes" value="@i" id="size @i" checked="@leaver">
+                                <label class="form-check-label" for="size @i" style=""  >@i</label>
+
+                                 <input type="text" class="" style="width:40px;" name="sizesCounts" id="size @i count" value="@amount">
+                                <label class="form-check-label" for="size @i count"  ></label>
+
+
+                                    </div>  
+                            }
+
+                </div>
+            </div>
+            </div>
+            <br />
+            <br />
+                Категорії<br />
+                <input type="text" placeholder="Введіть категорію і натисніть Enter" class="form-control" id="tag-input" />
+                <br />
+            <div class="form-group" id="tags-container">
+                @foreach (var i in Model.Categories)
+                    {
+                                <div class="tag"><input type="text" value="@i.Name" name="categories" readonly="true" class="tag-input"><span class="delete-icon">×</span></div>
+                    }
+            </div>
+
+
+            <br />
+            <div class="form-group">
+                <h3>Залишіть поле пустим якщо хочете залишити старе фото</h3>
+                    @for (int i = 1; i < 6; i++)
+                    {
+                        @if (Model.GoodPhotos.ElementAtOrDefault(i - 1) != null)
+                        {
+                            <a href="@Model.GoodPhotos[i-1].Path" target='_blank'>Фото @i</a>
+                        }
+                        else
+                        {
+                            <div>Фото @i</div>
+                        }
+                        string inputName = $"file{i}";
+
+                                <input type="file" name="@inputName" class="form-control" />
+                    }
+                </div><br />
+            <div class="form-group">
+                <input type="submit" value="Зберегти" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад до списку</a>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script> 
+
+        var check1, check2;
+function radioClick(c) {
+    if (check1 != c) {
+        check2 = 0;
+        check1 = c
+    }
+    check2 ^= 1;
+    c.checked = check2
+}
+    </script>
+    <script src="~/js/Goods.Edit.js" asp-append-version="true"></script>
+<script src="~/js/Goods.Create.js" asp-append-version="true"></script>
+
+

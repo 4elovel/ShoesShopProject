@@ -1,0 +1,10 @@
+﻿@model IEnumerable<ShoesShopProject.ViewModels.GoodCardViewModel>
+
+@{
+    Layout = null;    
+}
+
+@foreach (var item in Model)
+{
+	@await Component.InvokeAsync("GoodCard", item)
+}

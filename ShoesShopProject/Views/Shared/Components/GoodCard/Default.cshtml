@@ -8,15 +8,20 @@
         SizesToString += " ";
     }
 }
-
-<div class="card">
+<a style="color:inherit;" @{
+    if (!String.IsNullOrEmpty(Model.Slug))
+    {
+        <text>href = "/Shoes/Details/@(Model.Slug)"</text>
+    }
+} >
+    <div class="card">
    
                 <div class="content">
                   
         @if (Model.GoodPhotos != null && Model.GoodPhotos.Any())
         {
         <img height="200px" width="200px" id="Layer_1"  viewBox="0 0 512 512" src="@Model.GoodPhotos.FirstOrDefault().Path"></img>
-        }">
+        }
                   <div class="description">
                     <p class="title">
                       <strong style="font-size: 22px;">@Model.Name</strong>
@@ -30,7 +35,7 @@
                 <br>
                 @if(Model.Sale!=0){
                                 <div class="discount-badge">-@Model.Sale&percnt;</div>
-                    <p class="price">
+                    <p class="price" style="">
                       <s>@Model.FullPrice</s>
                     </p>
                     <p class="price" style="font-size: 25px; color: red;">
@@ -59,3 +64,4 @@
                   </div>
                 </div>
               </div>
+              </a>

@@ -9,5 +9,7 @@ public class AppMappingProfile : Profile
     public AppMappingProfile()
     {
         CreateMap<Good, GoodCardViewModel>().ReverseMap();
+        CreateMap<Good, GoodDetailsViewMidel>().ReverseMap();
+        CreateMap<Good, GoodOrderViewModel>().ReverseMap();
     }
 }

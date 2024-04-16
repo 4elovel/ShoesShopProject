@@ -3,8 +3,14 @@
 public class Order
 {
     public int Id { get; set; }
-    public List<Good> Goods { get; set; } = [];
-    public User? User { get; set; }
-    public string Status { get; set; } = "processed";
+    public List<GoodOrder> GoodOrders { get; set; } = new List<GoodOrder>();
+    public ApplicationUser? User { get; set; }
+    public OrderStatuses Status { get; set; } = OrderStatuses.Pending;
 
+}
+public enum OrderStatuses
+{
+    Pending,//pre-order
+    Ordered,// process of order is started
+    Completed,//comleted order
 }

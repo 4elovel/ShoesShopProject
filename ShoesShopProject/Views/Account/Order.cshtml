@@ -1,0 +1,157 @@
+﻿@model List<ShoesShopProject.ViewModels.GoodOrderViewModel>
+@{
+    ViewData["Title"] = "Замовлення";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int loopCounter = 0;
+    decimal total = 0;
+}
+
+<div style="position:relative;width:100%;height:90vh">
+@foreach (var i in Model)
+{
+    <div class="Good@(loopCounter)">
+        <hr>
+        <div style="display: flex; position: relative;">
+                  <div class="basket" onclick="deleteGoodFromOrder('@(i.Slug)','Good@(loopCounter)');">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4.42857 6.5H11.5714V13C11.5714 13.5523 11.1237 14 10.5714 14H5.42857C4.87629 14 4.42857 13.5523 4.42857 13V6.5Z" stroke="#666666" stroke-width="1.5"/>
+              <path d="M3 5.25C3 4.69772 3.44772 4.25 4 4.25H12C12.5523 4.25 13 4.69772 13 5.25V5.5C13 6.05228 12.5523 6.5 12 6.5H4C3.44772 6.5 3 6.05228 3 5.5V5.25Z" stroke="#666666" stroke-width="1.5"/>
+              <path d="M5.5 3C5.5 2.44772 5.94772 2 6.5 2H9.5C10.0523 2 10.5 2.44772 10.5 3V4.25H5.5V3Z" stroke="#666666" stroke-width="1.5"/>
+              </svg>
+              <span style="font-size: 14px;">
+            Видалити
+          </span>
+          </div>
+                <a style="color:inherit;" @{
+                    if (!String.IsNullOrEmpty(i.Slug))
+                    {
+                        <text>href = "/Shoes/Details/@(i.Slug)"</text>
+                    }
+                } >
+        <div>
+          <img width="80px" alt="Shoe Image" src="@i.Photo">
+        </div>
+        </a>
+        <div style="font-size: 16px; color: #969494; margin-left: 20px;">
+          <div style="display: none;" value="@(i.Slug)" class="slug">@i.Slug</div>
+          <div style="margin-bottom: 3px;">@i.Name</div>
+          <div style="margin-bottom: 3px;" class="size" value="@(i.Size)">@i.Size розмір</div>
+                    <div style="color: black;margin-bottom: 3px; font-weight: 500;" class="sale-price" value="@i.SalePrice">@i.SalePrice ₴</div>
+          <div class="qty">
+                        <span class="minus bg-dark" onclick="decreaseCounter('counter@(loopCounter)');">-</span>
+                <input class="count counter@(loopCounter)" name="Count" value="@i.Count">
+                            <span class="plus bg-dark" onclick="increaseCounter('counter@(loopCounter)');">+</span>
+        </div>
+        </div>
+      </div>
+      
+    <hr>
+        </div>
+        loopCounter += 1;
+        total += i.Count * (decimal)i.SalePrice;
+    }
+    <div class="ui-wrapper">
+    <input checked="" id="Ukraine" name="flag" type="radio">
+    <input id="Austria" name="flag" type="radio">
+    <input id="Belgium" name="flag" type="radio">
+    <input id="Bulgaria" name="flag" type="radio">
+    <input id="Croatia" name="flag" type="radio">
+    <input id="Cyprus" name="flag" type="radio">
+    <input id="Czech" name="flag" type="radio">
+    <input id="Denmark" name="flag" type="radio">
+    <input id="Estonia" name="flag" type="radio">
+    <input id="Finland" name="flag" type="radio">
+    <input id="France" name="flag" type="radio">
+    <input id="Germany" name="flag" type="radio">
+    <input id="Greece" name="flag" type="radio">
+    <input id="Hungary" name="flag" type="radio">
+    <input id="Iceland" name="flag" type="radio">
+    <input id="Ireland" name="flag" type="radio">
+    <input id="Italy" name="flag" type="radio">
+    <input id="Latvia" name="flag" type="radio">
+    <input id="Liechtenstein" name="flag" type="radio">
+    <input id="Lithuania" name="flag" type="radio">
+    <input id="Luxembourg" name="flag" type="radio">
+    <input id="Malta" name="flag" type="radio">
+    <input id="Netherlands" name="flag" type="radio">
+    <input id="Norway" name="flag" type="radio">
+    <input id="Poland" name="flag" type="radio">
+    <input id="Portugal" name="flag" type="radio">
+    <input id="Romania" name="flag" type="radio">
+    <input id="Slovakia" name="flag" type="radio">
+    <input id="Slovenia" name="flag" type="radio">
+    <input id="Spain" name="flag" type="radio">
+    <input id="Sweden" name="flag" type="radio">
+    <input class="dropdown-checkbox" name="dropdown" id="dropdown" type="checkbox">
+    <label class="dropdown-container" for="dropdown"></label>
+    <div class="input-wrapper">
+        <legend>
+          <label style="margin-bottom:0;" for="phonenumber">
+            Phonenumber*
+          </label>
+        </legend>
+        <div class="textfield">
+            <input pattern="\d+" maxlength="11" id="phonenumber" type="text">
+            <span class="invalid-msg">This is not a valid phone number</span>
+        </div>
+    </div>
+    <div class="select-wrapper">
+        <ul>
+            <li class="Ukraine"><label for="Ukraine"><span>🇺🇦</span>Ukraine (+380)</label></li>
+            <li class="Austria"><label for="Austria"><span>🇦🇹</span>Austria (+43)</label></li>
+            <li class="Belgium"><label for="Belgium"><span>🇧🇪</span>Belgium (+32)</label></li>
+            <li class="Bulgaria"><label for="Bulgaria"><span>🇧🇬</span>Bulgaria (+359)</label></li>
+            <li class="Croatia"><label for="Croatia"><span>🇭🇷</span>Croatia (+385)</label></li>
+            <li class="Cyprus"><label for="Cyprus"><span>🇨🇾</span>Cyprus (+357)</label></li>
+            <li class="Czech"><label for="Czech"><span>🇨🇿</span>Czech Republic (+420)</label></li>
+            <li class="Denmark"><label for="Denmark"><span>🇩🇰</span>Denmark (+45)</label></li>
+            <li class="Estonia"><label for="Estonia"><span>🇪🇪</span>Estonia (+372)</label></li>
+            <li class="Finland"><label for="Finland"><span>🇫🇮</span>Finland (+358)</label></li>
+            <li class="France"><label for="France"><span>🇫🇷</span>France (+33)</label></li>
+            <li class="Germany"><label for="Germany"><span>🇩🇪</span>Germany (+49)</label></li>
+            <li class="Greece"><label for="Greece"><span>🇬🇷</span>Greece (+30)</label></li>
+            <li class="Hungary"><label for="Hungary"><span>🇭🇺</span>Hungary (+36)</label></li>
+            <li class="Iceland"><label for="Iceland"><span>🇮🇸</span>Iceland (+354)</label></li>
+            <li class="Ireland"><label for="Ireland"><span>🇮🇪</span>Republic of Ireland (+353)</label></li>
+            <li class="Italy"><label for="Italy"><span>🇮🇹</span>Italy (+39)</label></li>
+            <li class="Latvia"><label for="Latvia"><span>🇱🇻</span>Latvia (+371)</label></li>
+            <li class="Liechtenstein"><label for="Liechtenstein"><span>🇱🇮</span>Liechtenstein (+423)</label></li>
+            <li class="Lithuania"><label for="Lithuania"><span>🇱🇹</span>Lithuania (+370)</label></li>
+            <li class="Luxembourg"><label for="Luxembourg"><span>🇱🇺</span>Luxembourg (+352)</label></li>
+            <li class="Malta"><label for="Malta"><span>🇲🇹</span>Malta (+356)</label></li>
+            <li class="Netherlands"><label for="Netherlands"><span>🇳🇱</span>Netherlands (+31)</label></li>
+            <li class="Norway"><label for="Norway"><span>🇳🇴</span>Norway (+47)</label></li>
+            <li class="Poland"><label for="Poland"><span>🇵🇱</span>Poland (+48)</label></li>
+            <li class="Portugal"><label for="Portugal"><span>🇵🇹</span>Portugal (+351)</label></li>
+            <li class="Romania"><label for="Romania"><span>🇷🇴</span>Romania (+40)</label></li>
+            <li class="Slovakia"><label for="Slovakia"><span>🇸🇰</span>Slovakia (+421)</label></li>
+            <li class="Slovenia"><label for="Slovenia"><span>🇸🇮</span>Slovenia (+386)</label></li>
+            <li class="Spain"><label for="Spain"><span>🇪🇸</span>Spain (+34)</label></li>
+            <li class="Sweden"><label for="Sweden"><span>🇸🇪</span>Sweden (+46)</label></li>
+        </ul>
+    </div>
+</div>
+
+<h2 style="margin-top:20px;">
+        Сума - <span id="total">@(total)</span>₴
+    </h2>
+
+    <div class="center">
+    <button class="add-order-button" style="width:35%">замовити</button>
+    </div>
+
+
+    <div class="alert alert-success alert-dismissible fade" style="position:absolute;bottom:60px;width:100%;" role="alert">
+  <strong>Вітаю!</strong> ви успішно зробили замовлення очікуйте повідомлень на телефон.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="~/js/Account.Order.js" asp-append-version="true"></script>
+    
