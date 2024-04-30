@@ -10,7 +10,7 @@ public class Order
 }
 public enum OrderStatuses
 {
-    Pending,//pre-order
     Ordered,// process of order is started
+    Pending,//pre-order
     Completed,//comleted order
 }

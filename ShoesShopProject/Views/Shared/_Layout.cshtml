@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" href="~/icon.png" sizes="32x32">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="body">
 <header style="position: sticky; top: 0px; z-index: 10;">
       <div class="navigation">
         <ul class="tabs main-menu-top">
@@ -30,7 +30,7 @@
         </ul>
         
         <div class="nav-buttons">
-          <a href="/Identity/Account/Login" class="profile-button">
+                <a href="@(User.Identity.IsAuthenticated ? "/Identity/Account/Manage" : "/Identity/Account/Login")" class="profile-button">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
             <g id="icon-profile" class="img">
                 <rect width="26" height="26"/>

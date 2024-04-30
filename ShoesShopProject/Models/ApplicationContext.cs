@@ -28,9 +28,9 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
         modelBuilder.Entity<ApplicationUser>()
         .HasMany(e => e.WishList)
         .WithMany();
-
-        /*        modelBuilder.Entity<GoodOrder>()
-               .HasKey(go => new { go.GoodId, go.OrderId });*/
+        modelBuilder.Entity<Good>()
+                .HasIndex(g => g.Slug)
+                .IsUnique();
 
         modelBuilder.Entity<GoodOrder>()
             .HasOne(go => go.Good)

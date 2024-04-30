@@ -15,7 +15,7 @@ public class OrdersController : Controller
     }
     public IActionResult Index()
     {
-        var orders = _context.Orders.Include(o => o.User).Include(o => o.GoodOrders).ThenInclude(o => o.Good).OrderByDescending(o => o.Status).ToList();
+        var orders = _context.Orders.Include(o => o.User).Include(o => o.GoodOrders).ThenInclude(o => o.Good).OrderBy(o => o.Status).ToList();
         var DTO = new List<AdminOrderViewModel>();
         foreach (var order in orders)
         {

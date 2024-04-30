@@ -40,6 +40,7 @@ async function deleteGoodFromOrder(slug, elementClass) {
             element.remove();
         });
         updateTotal();
+        updatePageSize();
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
     }
@@ -114,4 +115,27 @@ function updateTotal() {
 }
 $(document).ready(function () {
     updateTotal();
+    updatePageSize();
 });
+function updatePageSize() {
+    ; (function () {
+        var pageHeight = 0;
+
+        function findHighestNode(nodesList) {
+            for (var i = nodesList.length - 1; i >= 0; i--) {
+                if (nodesList[i].scrollHeight && nodesList[i].clientHeight) {
+                    var elHeight = Math.max(nodesList[i].scrollHeight, nodesList[i].clientHeight);
+                    pageHeight = Math.max(elHeight, pageHeight);
+                }
+                if (nodesList[i].childNodes.length) findHighestNode(nodesList[i].childNodes);
+            }
+        }
+
+        findHighestNode(document.documentElement.childNodes);
+        console.log(pageHeight);
+        var htmlElement = document.documentElement;
+        var bodyElement = document.body;
+        htmlElement.style.height = pageHeight + "px";
+        bodyElement.style.height = pageHeight + "px";
+    })();
+}

@@ -20,7 +20,7 @@ public class Good
     [Display(Name = "ціна із знижкою")]
     public decimal SalePrice { get; set; }
     [Display(Name = "слаг")]
-    public string? Slug { get; set; }
+    public string Slug { get; set; } = null!;
     [Display(Name = "стать")]
     public char Gender { get; set; } // m-male f-female b-both
     [Display(Name = "категорії")]

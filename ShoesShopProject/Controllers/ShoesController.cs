@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using ShoesShopProject.Extensions;
 using ShoesShopProject.Models;
 using ShoesShopProject.ViewModels;
+using System.Web;
 
 
 namespace ShoesShopProject.Controllers;
@@ -55,6 +56,7 @@ public class ShoesController : Controller
     public IActionResult Find(FindGoodViewModel DTO)
     {
         string buf = DTO.SerializeFieldsToString();
+        buf = HttpUtility.UrlPathEncode(buf);
         return Redirect($"/Shoes/Find?{buf}");
     }
     [Route("Shoes/Details/{slug}")]

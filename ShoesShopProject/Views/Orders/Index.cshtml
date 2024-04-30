@@ -26,29 +26,29 @@
 
                             @if (i.Status == OrderStatuses.Ordered)
                             {
-                                <option selected value="1" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Ordered)">Ordered</option>
+                                <option selected value="@((int)OrderStatuses.Ordered)" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Ordered)">Ordered</option>
                             }
                             else
                             {
-                                <option value="1" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Ordered)">Ordered</option>
+                                <option value="@((int)OrderStatuses.Ordered)" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Ordered)">Ordered</option>
                             }
 
                             @if (i.Status == OrderStatuses.Pending)
                             {
-                                <option selected value="0" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Pending)">Pending</option>
+                                <option selected value="@((int)OrderStatuses.Pending)" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Pending)">Pending</option>
                             }
                             else
                             {
-                                <option value="0" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Pending)">Pending</option>
+                                <option value="@((int)OrderStatuses.Pending)" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Pending)">Pending</option>
                             }
 
                             @if (i.Status == OrderStatuses.Completed)
                             {
-                                <option selected value="2" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Completed)">Completed</option>
+                                <option selected value="@((int)OrderStatuses.Completed)" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Completed)">Completed</option>
                             }
                             else
                             {
-                                <option value="2" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Completed)">Completed</option>
+                                <option value="@((int)OrderStatuses.Completed)" data-order-id="@i.OrderId" data-status="@((int)OrderStatuses.Completed)">Completed</option>
                             }
                         </select>
                     </td>
