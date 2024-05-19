@@ -17,6 +17,7 @@
 <body id="body">
 <header style="position: sticky; top: 0px; z-index: 10;">
       <div class="navigation">
+            <button class="burger-button" onclick="toggleMenu()">☰</button>
         <ul class="tabs main-menu-top">
                 <li><a href="/Home" id="main-page">На головну</a></li>
                 <li><a href="/Shoes/Find?gender=m" id="male">Чоловікам</a></li>
@@ -74,3 +75,9 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<script>
+    function toggleMenu() {
+        var menu = document.querySelector('.tabs.main-menu-top');
+        menu.classList.toggle('show');
+    }
+</script>

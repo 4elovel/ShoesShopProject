@@ -11,7 +11,7 @@
 
       
       <form name="wishlist-add-button" style="width: 80%; display: None;" action="/Shoes/AddToWishlist/@(Model.Id)" method="POST" id="wishlist-add-button"></form>
-      <div id='heart' class='wishlist @(Model.IsInWishlist == true? "active" : "")' style="position:absolute;top:0px;right:-100px;"> </div>
+      <div id='heart' class='wishlist @(Model.IsInWishlist == true? "active" : "")' style="position:absolute;top:0px;"> </div>
 
       
 
@@ -27,7 +27,7 @@
         @foreach (var i in Model.GoodPhotos)
         {
           <div class="carousel-item @(i.Position == 1? "active" : "")">
-            <img class="d-block w-100" src="@i.Path" alt="@i.Position slide" />
+            <img class="d-block w-100 carousel-image" src="@i.Path" alt="@i.Position slide" />
           </div>
         }
       </div>
@@ -71,7 +71,7 @@
             </p>
             <p class="price" style="font-size: 25px; color: red; display: inline-block;">
               @Model.SalePrice
-                          <div class="discount-badge" style="bottom: 4px; right: 0px; left: unset;">-@Model.Sale&percnt;</div>
+                            <div class="discount-badge discount-badge-shoes-enpoint">-@Model.Sale&percnt;</div>
             </p>
           </div>
         }

@@ -45,6 +45,7 @@ namespace ShoesShopProject.Areas.Identity.Pages.Account.Manage
             /// </summary>
             [Required]
             [DataType(DataType.Password)]
+            [Display(Name = "пароль")]
             public string Password { get; set; }
         }
 

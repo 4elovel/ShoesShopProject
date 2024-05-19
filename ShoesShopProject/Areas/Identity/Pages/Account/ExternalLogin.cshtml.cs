@@ -174,7 +174,7 @@ namespace ShoesShopProject.Areas.Identity.Pages.Account
                             values: new { area = "Identity", userId = userId, code = code },
                             protocol: Request.Scheme);
 
-                        await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                        await _emailSender.SendEmailAsync(Input.Email, "Підтвердіть свою електронну пошту",
                             $"Підтвердьте свій обліковий запис <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>нажавши сюди</a>.");
 
                         // If account confirmation is required, we need to show the link if we don't have a real email sender

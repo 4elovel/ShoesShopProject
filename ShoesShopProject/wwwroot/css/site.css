@@ -4,6 +4,10 @@
     aspect-ratio: auto;
 }
 
+.phone-display{
+    display: none;
+}
+
 html {
     font-size: 14px;
     font-family: "Varela Round", sans-serif;
@@ -330,6 +334,7 @@ header .main-menu-top {
     margin-bottom: 30px;
     width: 100%;
     border-color: #9a9a9a !important;
+    display: flex;
 }
 
 .heading {
@@ -608,6 +613,7 @@ header .main-menu-top {
     background: none;
     cursor: pointer;
     transition: background 0.5s ease;
+    right: -100px;
 }
 
     .wishlist:hover {
@@ -647,4 +653,82 @@ header .main-menu-top {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.burger-button {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .burger-button {
+        display: block;
+    }
+
+    .tabs.main-menu-top {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+        .tabs.main-menu-top.show {
+            display: flex;
+        }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-around;
+    }
+    .tabs.main-menu-top.show li {
+        margin-bottom: 10px;
+    }
+    .baner-border{
+        display: none;
+    }
+    .phone-display{
+        display:initial;
+    }
+}
+.discount-badge-shoes-enpoint {
+    bottom: 4px;
+    right: -20px;
+    left: unset;
+}
+@media (max-width: 767px) {
+    #carouselExampleIndicators{
+        margin-top:100px;
+    }
+
+    .wishlist {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: auto;
+    }
+    .discount-badge-shoes-enpoint {
+        right: -60px; 
+    }
+    .carousel-image{
+        margin-top: 20%;
+    }
 }
